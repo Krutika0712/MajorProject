@@ -32,5 +32,6 @@ namespace LoanManagementSystem.Models
         public Customer Customer { get; set; }
 
         #endregion
+      
     }
 }

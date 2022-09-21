@@ -55,11 +55,18 @@
                 @Html.DisplayFor(modelItem => item.LoanCategory.LoanName)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PlanId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PlanId">Details</a> |
+                <a asp-action="Edit" asp-route-id="@item.PlanId">Edit</a> 
+                |
+                <a asp-action="Details" asp-route-id="@item.PlanId">Details</a>
+                |
                 <a asp-action="Delete" asp-route-id="@item.PlanId">Delete</a>
+                |
+                <a class="btn btn-sm btn-warning" asp-area="LoanMgmt" asp-controller="Customers" 
+                       asp-action="Create" asp-route-id="@item.PlanId" >Apply Loan<br/></a>
             </td>
         </tr>
+       
+                     
 }
     </tbody>
 </table>

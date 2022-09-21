@@ -76,6 +76,9 @@
                 <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.CustomerId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
+                  |
+                <a class="btn btn-sm btn-warning" asp-area="LoanMgmt" asp-controller="Approvals" 
+                       asp-action="Create" asp-route-id="@item.CustomerId" >Approvels</a>
             </td>
         </tr>
 }

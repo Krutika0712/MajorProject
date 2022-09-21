@@ -47,9 +47,13 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         }
 
         // GET: LoanMgmt/Customers/Create
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            ViewData["PlanId"] = new SelectList(_context.Plan, "PlanId", "PlanType");
+
+            var plan = _context.Plan.SingleOrDefault(c => c.PlanId == id);
+            ViewBag.PlanId = plan.PlanId;
+            ViewBag.PlanType = plan.PlanType;
+           // ViewData["PlanId"] = new SelectList(_context.Plan, "PlanId", "PlanType");
             return View();
         }
 
