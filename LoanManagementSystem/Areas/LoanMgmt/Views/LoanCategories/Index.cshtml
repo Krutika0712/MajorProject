@@ -28,6 +28,10 @@
                 <a asp-action="Edit" asp-route-id="@item.LoanId">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.LoanId">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.LoanId">Delete</a>
+                |
+                <a class="btn btn-sm btn-warning" asp-area="LoanMgmt" asp-controller="Plans" 
+                       asp-action="GetPlanOfCategory" 
+                       asp-route-filterLoanId="@item.LoanId">View Plans</a>
             </td>
         </tr>
 }

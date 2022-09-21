@@ -27,6 +27,16 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        public async Task<IActionResult> GetPlanOfCategory(int filterLoanId)
+        {
+            var viewmodel = await _context.Plan
+                                          .Where(m => m.LoanId == filterLoanId)
+                                          .Include(m => m.LoanCategory)
+                                          .ToListAsync();
+
+            return View(viewName: "Index", model: viewmodel);
+        }
+
         // GET: LoanMgmt/Plans/Details/5
         public async Task<IActionResult> Details(int? id)
         {
