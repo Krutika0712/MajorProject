@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LoanManagementSystem.Data;
 using LoanManagementSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
 {
     [Area("LoanMgmt")]
+    [Authorize]
     public class PlansController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -57,6 +59,7 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         }
 
         // GET: LoanMgmt/Plans/Create
+        [Authorize(Roles = "LoanAdmin")]
         public IActionResult Create()
         {
             ViewData["LoanId"] = new SelectList(_context.LoanCategories, "LoanId", "LoanName");
@@ -68,6 +71,7 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "LoanAdmin")]
         public async Task<IActionResult> Create([Bind("PlanId,PlanType,Amount,Description,Eligibility,CreatedDate,LoanId")] Plan plan)
         {
             if (ModelState.IsValid)
@@ -81,6 +85,7 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         }
 
         // GET: LoanMgmt/Plans/Edit/5
+        [Authorize(Roles = "LoanAdmin")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -102,6 +107,7 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "LoanAdmin")]
         public async Task<IActionResult> Edit(int id, [Bind("PlanId,PlanType,Amount,Description,Eligibility,CreatedDate,LoanId")] Plan plan)
         {
             if (id != plan.PlanId)
@@ -134,6 +140,7 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         }
 
         // GET: LoanMgmt/Plans/Delete/5
+        [Authorize(Roles = "LoanAdmin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -155,6 +162,7 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         // POST: LoanMgmt/Plans/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "LoanAdmin")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var plan = await _context.Plan.FindAsync(id);

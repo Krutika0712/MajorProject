@@ -7,10 +7,12 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LoanManagementSystem.Data;
 using LoanManagementSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
 {
     [Area("LoanMgmt")]
+    [Authorize]
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -47,19 +49,21 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         }
 
         // GET: LoanMgmt/Customers/Create
-        public IActionResult Create(int id)
+      
+        public IActionResult Create()
         {
 
-            var plan = _context.Plan.SingleOrDefault(c => c.PlanId == id);
-            ViewBag.PlanId = plan.PlanId;
-            ViewBag.PlanType = plan.PlanType;
-           // ViewData["PlanId"] = new SelectList(_context.Plan, "PlanId", "PlanType");
+            //var plan = _context.Plan.SingleOrDefault(c => c.PlanId == id);
+            //ViewBag.PlanId = plan.PlanId;
+            //ViewBag.PlanType = plan.PlanType;
+            ViewData["PlanId"] = new SelectList(_context.Plan, "PlanId", "PlanType");
             return View();
         }
 
         // POST: LoanMgmt/Customers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+     
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerId,FullName,Address,Phonenumber,Email,BirthDate,Age,Gender,State,PlanId")] Customer customer)
@@ -75,6 +79,7 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         }
 
         // GET: LoanMgmt/Customers/Edit/5
+       
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -96,6 +101,7 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> Edit(int id, [Bind("CustomerId,FullName,Address,Phonenumber,Email,BirthDate,Age,Gender,State,PlanId")] Customer customer)
         {
             if (id != customer.CustomerId)
@@ -126,7 +132,7 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
             ViewData["PlanId"] = new SelectList(_context.Plan, "PlanId", "PlanType", customer.PlanId);
             return View(customer);
         }
-
+       
         // GET: LoanMgmt/Customers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -149,6 +155,7 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         // POST: LoanMgmt/Customers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+       
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var customer = await _context.Customer.FindAsync(id);
