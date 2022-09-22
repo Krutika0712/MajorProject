@@ -68,35 +68,24 @@
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
                                   Mange
                                 </a>
-                                <div class="dropdown-menu">
-                                  
-                                        <a class="dropdown-item"
-                                          asp-area="LoanMgmt" asp-controller="LoanCategories">Loan Category</a>
-                                         
-                                        <a class="dropdown-item"
-                                         asp-area="LoanMgmt" asp-controller="Plans">Loan Plans</a>
-
-                                        <a class="dropdown-item"
-                                         asp-area="LoanMgmt" asp-controller="Customers">List of Customer</a>
-                                           
-                                        <a class="dropdown-item"
-                                         asp-area="LoanMgmt" asp-controller="Approvals">List of Status</a>
-                                        <div class="dropdown-divider"></div>
-                                      
-                                          <a class="dropdown-item"
+                              <div class="dropdown-menu">
+                                    <a class="dropdown-item"
                                             asp-area="LoanMgmt" asp-controller="LoanCategories">List of Loan</a>
-                                          <a class="dropdown-item"
+                                    <a class="dropdown-item"
                                            asp-area="LoanMgmt" asp-controller="Plans">List of Plans</a>
-
-                                          <a class="dropdown-item"
-                                            asp-area="LoanMgmt" asp-controller="Customers" >Apply Loan</a>
-
-                                           <a class="dropdown-item"
-                                            asp-area="LoanMgmt" asp-controller="Approvals">See Status</a>
-
+                                            <a class="dropdown-item"
+                                        asp-area="LoanMgmt" asp-controller="Customers" asp-action="Create">Apply Loan</a>
+                                @if (isUserAdmin)
+                                {
+                                         <a class="dropdown-item"
+                                         asp-area="LoanMgmt" asp-controller="Customers">List of Customer</a>
                                    
+                                }
+                                    <a class="dropdown-item"
+                                     asp-area="LoanMgmt" asp-controller="Approvals">See Status</a>
+                               
 
-                                </div>
+                              </div>
                             
                         </li>
 

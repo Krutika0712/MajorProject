@@ -23,8 +23,29 @@
     }
     else {
         <a class="btn btn-primary disabled" href="#">Create New</a>
+           <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Customers" 
+                       asp-action="Create" >Apply Loan<br/></a>
+                
     }
 </p>
+
+
+<style>
+table, th, td {
+  border: 4px solid white;
+  border-collapse: collapse;
+}
+th, td {
+  background-color:cornsilk;
+}
+body{
+        
+        background-image:url('https://wallpaperaccess.com/full/4106400.jpg');
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        background-size:100%;
+          }
+</style>
 <table class="table">
     <thead>
         <tr>
@@ -82,19 +103,15 @@
               else {
                  <a class="btn btn-primary disabled" href="#">Edit</a>
                  <a class="btn btn-primary disabled" href="#">Delete</a>
-                }
-            </td>
-              <td>
+                }          
                 |
-                <a  class="btn btn-sm btn-warning"  asp-action="Details" asp-route-id="@item.PlanId">Details</a>
-               
-                |
-                <a class="btn btn-sm btn-warning" asp-area="LoanMgmt" asp-controller="Customers" 
-                       asp-action="Create" asp-route-id="@item.PlanId" >Apply Loan<br/></a>
+                <a  class="btn btn-primary"  asp-action="Details" asp-route-id="@item.PlanId">Details</a>
+                             
             </td>
-        </tr>
-       
-                     
-}
+                             
+        </tr>     
+                  
+}                    
+              
     </tbody>
 </table>

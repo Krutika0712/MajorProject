@@ -1,14 +1,51 @@
-﻿@model IEnumerable<LoanManagementSystem.Models.Customer>
+﻿@using LoanManagementSystem.Models.Enums
+@using Microsoft.AspNetCore.Identity
+
+@model IEnumerable<LoanManagementSystem.Models.Customer>
+
+@inject UserManager<IdentityUser> _userManager
 
 @{
     ViewData["Title"] = "Index";
+      var user = await _userManager.GetUserAsync(this.User);
+    var isAdmin = await _userManager.IsInRoleAsync(user, MyIdentityRoleNames.LoanAdmin.ToString());
 }
-@*
-<h1>Index</h1>*@
 
 <p>
-    <a asp-action="Create">Create New</a>
+    
+    @if (isAdmin)
+    {
+        <a class="btn btn-primary disabled" asp-action="Create">Create New</a>
+         <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Approvals" 
+                       asp-action="Create">Approvels</a>
+    }
+    else {
+        <a class="btn btn-primary " href="#">Create New</a>
+           <a class="btn btn-warning disabled" asp-area="LoanMgmt" asp-controller="Approvals" 
+                       asp-action="Create">Approvels</a>                  
+    }         
 </p>
+
+
+<style>
+table, th, td {
+  border: 4px solid white;
+  border-collapse: collapse;
+  
+}
+th, td {
+  background-color:cornsilk;
+}
+body{
+        
+        background-color:aqua;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        background-size:100%;
+          }
+</style>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -73,14 +110,22 @@
                 @Html.DisplayFor(modelItem => item.Plan.PlanType)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CustomerId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
-                  |
-                <a class="btn btn-sm btn-warning" asp-area="LoanMgmt" asp-controller="Approvals" 
-                       asp-action="Create" asp-route-id="@item.CustomerId" >Approvels</a>
+              @if (isAdmin)
+              {
+                <a class="btn btn-primary disabled" asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a> 
+                 <a class="btn btn-primary disabled" asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
+              }
+                else {
+                 <a class="btn btn-primary" href="#">Edit</a>
+                 <a class="btn btn-primary" href="#">Delete</a>
+                }   
+                <a  class="btn btn-primary"  asp-action="Details" asp-route-id="@item.CustomerId">Details</a> 
+               
+               
             </td>
         </tr>
-}
+                     
+                
+}                   
     </tbody>
 </table>
