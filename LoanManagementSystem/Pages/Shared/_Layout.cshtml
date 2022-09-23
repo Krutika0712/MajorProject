@@ -48,7 +48,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-info border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">LoanManagementSystem</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -73,17 +73,22 @@
                                             asp-area="LoanMgmt" asp-controller="LoanCategories">List of Loan</a>
                                     <a class="dropdown-item"
                                            asp-area="LoanMgmt" asp-controller="Plans">List of Plans</a>
-                                            <a class="dropdown-item"
+                                   <a class="dropdown-item"
                                         asp-area="LoanMgmt" asp-controller="Customers" asp-action="Create">Apply Loan</a>
+                                     
                                 @if (isUserAdmin)
                                 {
-                                         <a class="dropdown-item"
-                                         asp-area="LoanMgmt" asp-controller="Customers">List of Customer</a>
+                                      <a class="dropdown-item"
+                                   asp-area="LoanMgmt" asp-controller="Customers">List of Customer</a>
+                                     <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="~/MyApiLoanCategories.html">
+                                     Loan Categories API 
+                                    </a>
                                    
                                 }
-                                    <a class="dropdown-item"
+                                  <a class="dropdown-item"
                                      asp-area="LoanMgmt" asp-controller="Approvals">See Status</a>
-                               
+                              
 
                               </div>
                             

@@ -60,15 +60,16 @@ body{
     <tbody>
 @foreach (var item in Model) {
         <tr>
+             <td>
+                @Html.DisplayFor(modelItem => item.Customer.FullName) 
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ApprovalDate)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.FullName)
-            </td>
+           
             
             <td>
                  @if (isAdmin)
@@ -80,7 +81,7 @@ body{
                  <a class="btn btn-primary disabled" href="#">Edit</a>
                  <a class="btn btn-primary disabled" href="#">Delete</a>
                 } 
-                <a asp-action="Details" asp-route-id="@item.ApprovalId">Details</a> 
+                <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.ApprovalId">Details</a> 
                 
                
                 

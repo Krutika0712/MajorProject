@@ -15,7 +15,7 @@ namespace LoanManagementSystem.Models
         public int PlanId { get; set; }
 
         // -----Loan name ----------//
-        [Display(Name = " Plan Name")]
+        [Display(Name = "Loan Plan ")]
         [Required(ErrorMessage = "{0} cannot be empty!")]
         [StringLength(80)]
         public string PlanType { get; set; }
@@ -47,9 +47,10 @@ namespace LoanManagementSystem.Models
 
 
         #region Navigation Properties to the Loan Category model
-
+        [Display(Name = "Loan Name")]
         public int LoanId { get; set; }
-
+        //NOTE: To ensure that all nested objects are not serialized, add the JsonIgnore Attribute
+        [System.Text.Json.Serialization.JsonIgnore]
         [ForeignKey(nameof(Plan.LoanId))]
         public LoanCategory LoanCategory { get; set; }
 

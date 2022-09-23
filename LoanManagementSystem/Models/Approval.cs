@@ -19,13 +19,14 @@ namespace LoanManagementSystem.Models
         public string Status { get; set; }
 
 
-        [Display(Name = "Apporoved Date")]
+        [Display(Name = "Apporoval Dates")]
         [Required(ErrorMessage = "{0} cannot be empty!")]
         [DataType(DataType.Date)]
         public DateTime ApprovalDate { get; set; }
 
 
         #region Navigation Properties to the Customer  model
+        [Display(Name = "Customer Names")]
         public int CustomerId { get; set; }
 
         [ForeignKey(nameof(Approval.CustomerId))]

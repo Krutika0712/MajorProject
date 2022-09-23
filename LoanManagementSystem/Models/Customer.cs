@@ -72,7 +72,7 @@ namespace LoanManagementSystem.Models
 
 
         #region Navigation Properties to the Plan model
-
+        [Display(Name = "Loan Plan ")]
         public int PlanId { get; set; }
 
         [ForeignKey(nameof(Customer.PlanId))]
