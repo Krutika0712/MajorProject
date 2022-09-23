@@ -44,15 +44,16 @@ body{
 <table class="table">
     <thead>
         <tr>
+             <th>
+                @Html.DisplayNameFor(model => model.Customer)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ApprovalDate)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer)
-            </th>
+           
             
             <th></th>
         </tr>
@@ -82,11 +83,10 @@ body{
                  <a class="btn btn-primary disabled" href="#">Delete</a>
                 } 
                 <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.ApprovalId">Details</a> 
-                
-               
-                
+                                
             </td>
         </tr>
 }
     </tbody>
 </table>
+<a class="btn btn-sm btn-warning btn-outline-danger" asp-area="LoanMgmt" asp-controller="Customers" asp-action="Index">List of Customers</a>

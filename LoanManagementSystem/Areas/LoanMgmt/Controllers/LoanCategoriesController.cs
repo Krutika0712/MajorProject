@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LoanManagementSystem.Data;
 using LoanManagementSystem.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
 {
@@ -16,10 +17,11 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
     public class LoanCategoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public LoanCategoriesController(ApplicationDbContext context)
+        private readonly ILogger<LoanCategoriesController> _logger;
+        public LoanCategoriesController(ApplicationDbContext context,ILogger<LoanCategoriesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: LoanMgmt/LoanCategories
@@ -61,12 +63,24 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("LoanId,LoanName")] LoanCategory loanCategory)
         {
+
+            loanCategory.LoanName = loanCategory.LoanName.Trim();
+
+            // Validation Checks - Server-side validation
+            bool duplicateExists = _context.LoanCategories.Any(l => l.LoanName == loanCategory.LoanName);
+            if (duplicateExists)
+            {
+                ModelState.AddModelError("LoanName", "Duplicate Loan Found!");
+            }
+
             if (ModelState.IsValid)
             {
-                _context.Add(loanCategory);
+                _context.LoanCategories.Add(loanCategory);
                 await _context.SaveChangesAsync();
+                _logger.LogInformation($"Created a New Loan: ID = {loanCategory.LoanId} !");
                 return RedirectToAction(nameof(Index));
             }
+
             return View(loanCategory);
         }
 
@@ -99,7 +113,16 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
             {
                 return NotFound();
             }
+            // Sanitize the data
+            loanCategory.LoanName = loanCategory.LoanName.Trim();
 
+            // Validation Checks - Server-side validation
+            bool duplicateExists = _context.LoanCategories
+                .Any(c => c.LoanName == loanCategory.LoanName && c.LoanId != loanCategory.LoanId);
+            if (duplicateExists)
+            {
+                ModelState.AddModelError("LoanName", "Duplicate Loan Found!");
+            }
             if (ModelState.IsValid)
             {
                 try

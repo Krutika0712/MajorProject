@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LoanManagementSystem.Data;
 using LoanManagementSystem.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
 {
@@ -16,10 +17,11 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
     public class PlansController : Controller
     {
         private readonly ApplicationDbContext _context;
-
-        public PlansController(ApplicationDbContext context)
+        private readonly ILogger<PlansController> _logger;
+        public PlansController(ApplicationDbContext context, ILogger<PlansController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: LoanMgmt/Plans
@@ -74,12 +76,28 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
         [Authorize(Roles = "LoanAdmin")]
         public async Task<IActionResult> Create([Bind("PlanId,PlanType,Amount,Description,Eligibility,CreatedDate,LoanId")] Plan plan)
         {
+            plan.PlanType = plan.PlanType.Trim();
+
+            // Validation Checks - Server-side validation
+            bool duplicateExists = _context.Plan.Any(l => l.PlanType == plan.PlanType);
+            if (duplicateExists)
+            {
+                ModelState.AddModelError("PlanType", "Duplicate Loan Plan Found!");
+            }
+
             if (ModelState.IsValid)
             {
-                _context.Add(plan);
+                _context.Plan.Add(plan);
                 await _context.SaveChangesAsync();
+                _logger.LogInformation($"Created a New Loan: ID = {plan.PlanId} !");
                 return RedirectToAction(nameof(Index));
             }
+            //if (ModelState.IsValid)
+            //{
+            //    _context.Add(plan);
+            //    await _context.SaveChangesAsync();
+            //    return RedirectToAction(nameof(Index));
+            //}
             ViewData["LoanId"] = new SelectList(_context.LoanCategories, "LoanId", "LoanName", plan.LoanId);
             return View(plan);
         }
@@ -113,6 +131,16 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
             if (id != plan.PlanId)
             {
                 return NotFound();
+            }
+            // Sanitize the data
+            plan.PlanType = plan.PlanType.Trim();
+
+            // Validation Checks - Server-side validation
+            bool duplicateExists = _context.Plan
+                .Any(c => c.PlanType == plan.PlanType && c.PlanId != plan.PlanId);
+            if (duplicateExists)
+            {
+                ModelState.AddModelError("PlanType", "Duplicate Loan Plan Found!");
             }
 
             if (ModelState.IsValid)

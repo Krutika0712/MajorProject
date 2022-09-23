@@ -75,6 +75,7 @@ namespace LoanManagementSystem.Models
         [Display(Name = "Loan Plan ")]
         public int PlanId { get; set; }
 
+        [System.Text.Json.Serialization.JsonIgnore]
         [ForeignKey(nameof(Customer.PlanId))]
 
         public Plan Plan { get; set; }

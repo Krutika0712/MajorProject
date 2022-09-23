@@ -24,8 +24,7 @@
     else {
         <a class="btn btn-primary disabled" href="#">Create New</a>
            <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Customers" 
-                       asp-action="Create" >Apply Loan<br/></a>
-                
+                       asp-action="Create" >Apply Loan<br/></a>                
     }
 </p>
 
@@ -116,3 +115,5 @@ body{
               
     </tbody>
 </table>
+<a class="btn btn-sm btn-warning btn-outline-danger" asp-area="LoanMgmt" asp-controller="LoanCategories" asp-action="Index">List of Loan Categories</a>
+<a class="btn btn-sm btn-danger text-white" asp-area="" asp-page="/Index">Back To Home</a>

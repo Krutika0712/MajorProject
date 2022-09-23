@@ -22,7 +22,7 @@ namespace LoanManagementSystem.Models
 
 
         //---------Amount------//
-        [Display(Name = "Amount")]
+        [Display(Name = "Loan Amount")]
         [Required(ErrorMessage = "{0} cannot be empty!")]
         public int Amount { get; set; }
 
