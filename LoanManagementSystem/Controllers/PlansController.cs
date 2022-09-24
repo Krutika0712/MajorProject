@@ -25,7 +25,9 @@ namespace LoanManagementSystem.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Plan>>> GetPlan()
         {
-            return await _context.Plan.Include(c => c.Customers).ToListAsync();
+            return await _context.Plan
+                .Include(c => c.Customers)
+                .ToListAsync();
         }
 
         // GET: api/Plans/5

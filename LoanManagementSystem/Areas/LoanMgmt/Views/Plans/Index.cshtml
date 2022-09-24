@@ -14,15 +14,15 @@
 }
 
 
-<h1><b>List of Loan Plan</b></h1>
+<center><h1><b>List of Loan Plan</b></h1></center>
 
 <p>
    @if (isAdmin)
     {
-        <a class="btn btn-primary" asp-action="Create">Create New</a>
+        <a class="btn btn-primary" asp-action="Create">Create New Loan Plan</a>
     }
     else {
-        <a class="btn btn-primary disabled" href="#">Create New</a>
+        <a class="btn btn-primary disabled" href="#">Create New Loan Plan</a>
            <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Customers" 
                        asp-action="Create" >Apply Loan<br/></a>                
     }
