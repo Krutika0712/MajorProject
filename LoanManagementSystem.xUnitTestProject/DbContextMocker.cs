@@ -42,17 +42,17 @@ namespace LoanManagementSystem.xUnitTestProject
                 new LoanCategory
                 {
                     LoanId = 1,
-                    LoanName = "First Category"
+                    LoanName = "First Loan Category"
                 },
                 new LoanCategory
                 {
                     LoanId = 2,
-                    LoanName = "Second Category"
+                    LoanName = "Second Loan Category"
                 },
                 new LoanCategory
                 {
                     LoanId = 3,
-                    LoanName = "Third Category"
+                    LoanName = "Third Loan Category"
                 },
             };
 

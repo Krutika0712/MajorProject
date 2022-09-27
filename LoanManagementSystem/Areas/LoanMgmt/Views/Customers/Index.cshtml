@@ -16,8 +16,7 @@
     @if (isAdmin)
     {
         @*<a class="btn btn-primary disabled"  href="#">Create New</a>*@
-         <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Approvals" 
-                       asp-action="Create">Loan Status</a>
+        
     }
     else {
         <a class="btn btn-primary "asp-action="Create">Create New</a>
@@ -168,6 +167,8 @@ body{
               {
                @* <a class="btn btn-primary disabled" href="#" >Edit</a> 
                  <a class="btn btn-primary disabled" href="#" >Delete</a>*@
+                  <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Approvals" 
+                       asp-action="Create" asp-route-id="@item.CustomerId">Loan Status</a>
               }
                 else {
                  <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a>

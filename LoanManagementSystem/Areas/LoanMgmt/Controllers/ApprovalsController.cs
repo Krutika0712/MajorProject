@@ -50,12 +50,12 @@ namespace LoanManagementSystem.Areas.LoanMgmt.Controllers
 
         // GET: LoanMgmt/Approvals/Create
         [Authorize(Roles = "LoanAdmin")]
-        public IActionResult Create()
+        public IActionResult Create(int id)
         {
-            //var Customers = _context.Customer.Where(c => c.CustomerId == id);
-            //ViewBag.CustomerId = Customers.CustomerId;
-            //ViewBag.FullName = Customers.FullName;
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "FullName");
+            var Customers = _context.Customer.SingleOrDefault(c => c.CustomerId == id);
+            ViewBag.CustomerId = Customers.CustomerId;
+            ViewBag.FullName = Customers.FullName;
+            //ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "FullName");
             return View();
         }
 
