@@ -17,11 +17,7 @@
     {
         <a class="btn btn-primary" asp-action="Create">Create New Loan Category</a>
     }
-    else {
-        <a class="btn btn-primary disabled" href="#">Create New Loan Category</a>
-          
-                
-    }
+   
 </p>
 
 <style>
@@ -61,10 +57,7 @@ body{
                 <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.LoanId">Edit</a> 
                    <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.LoanId">Delete</a>
               }
-                else {
-                 <a class="btn btn-primary disabled" href="#">Edit</a>
-                 <a class="btn btn-primary disabled" href="#">Delete</a>
-                }   
+                
                 <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.LoanId">Details</a> 
                 |
                 <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Plans" 

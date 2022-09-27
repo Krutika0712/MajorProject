@@ -26,8 +26,8 @@ namespace LoanManagementSystem.Models
         [Required(ErrorMessage = "{0} cannot be empty!")]
         public int Amount { get; set; }
 
-        //----- description-----//
-        [Display(Name = "Description")]
+        //-----Interest-----//
+        [Display(Name = "Interest")]
         [Required(ErrorMessage = "{0} cannot be empty!")]
         [StringLength(350)]
         public string Description { get; set; }

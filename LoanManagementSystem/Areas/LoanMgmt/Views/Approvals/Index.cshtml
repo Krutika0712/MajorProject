@@ -10,7 +10,7 @@
      var user = await _userManager.GetUserAsync(this.User);
     var isAdmin = await _userManager.IsInRoleAsync(user, MyIdentityRoleNames.LoanAdmin.ToString());
 }
-<center><h1><b>List of Status</b></h1></center>
+<center><h1><b>List of Loan Status</b></h1></center>
 
 <p>
     @if (isAdmin)
@@ -18,10 +18,7 @@
         <a class="btn btn-primary" asp-action="Create">Create New</a>
         
     }
-    else {
-        <a class="btn btn-primary disabled" href="#">Create New</a>
-                        
-    }         
+       
 </p>
 
 
@@ -78,10 +75,7 @@ body{
                 <a  class="btn btn-primary" asp-action="Edit" asp-route-id="@item.ApprovalId">Edit</a> 
                 <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.ApprovalId">Delete</a>
               }
-               else {
-                 <a class="btn btn-primary disabled" href="#">Edit</a>
-                 <a class="btn btn-primary disabled" href="#">Delete</a>
-                } 
+              
                 <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.ApprovalId">Details</a> 
                                 
             </td>

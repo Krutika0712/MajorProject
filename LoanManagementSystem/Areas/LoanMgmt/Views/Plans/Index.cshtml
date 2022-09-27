@@ -22,7 +22,7 @@
         <a class="btn btn-primary" asp-action="Create">Create New Loan Plan</a>
     }
     else {
-        <a class="btn btn-primary disabled" href="#">Create New Loan Plan</a>
+      
            <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Customers" 
                        asp-action="Create" >Apply Loan<br/></a>                
     }
@@ -60,10 +60,10 @@ body{
             <th>
                 @Html.DisplayNameFor(model => model.Eligibility)
             </th>
-            <th>
+             <th>
                 @Html.DisplayNameFor(model => model.CreatedDate)
             </th>
-            <th>
+             <th>
                 @Html.DisplayNameFor(model => model.LoanCategory)
             </th>
             <th></th>
@@ -84,10 +84,10 @@ body{
             <td>
                 @Html.DisplayFor(modelItem => item.Eligibility)
             </td>
-            <td>
+             <td>
                 @Html.DisplayFor(modelItem => item.CreatedDate)
             </td>
-            <td>
+             <td>
                 @Html.DisplayFor(modelItem => item.LoanCategory.LoanName)
             </td>
             <td>
@@ -99,12 +99,8 @@ body{
                  
                 <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.PlanId">Delete</a>
               }
-              else {
-                 <a class="btn btn-primary disabled" href="#">Edit</a>
+                  
                 
-                 <a class="btn btn-primary disabled" href="#">Delete</a>
-                }          
-                |
                 <a  class="btn btn-primary"  asp-action="Details" asp-route-id="@item.PlanId">Details</a>
                              
             </td>

@@ -19,7 +19,7 @@ namespace LoanManagementSystem.Models
         public string Status { get; set; }
 
 
-        [Display(Name = "Apporoval Dates")]
+        [Display(Name = "Approval Dates")]
         [Required(ErrorMessage = "{0} cannot be empty!")]
         [DataType(DataType.Date)]
         public DateTime ApprovalDate { get; set; }

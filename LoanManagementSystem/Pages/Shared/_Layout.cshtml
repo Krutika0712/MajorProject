@@ -31,7 +31,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="Borrow - is the loan company, Business Website Template.">
     <meta name="keywords" content="Financial Website Template, Bootstrap Template, Loan Product, Personal Loan">
-    <title>Borrow - A Loan Company </title>
+    <title>Loan Company </title>
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
@@ -61,33 +61,43 @@
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         @*<li class="nav-item">
+                              <a class="nav-link text-dark"
+                                   asp-area="LoanMgmt" asp-controller="ShowPlans" asp-action="Index">Search Loan</a>
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
                         </li>*@
                            <li class="nav-item dropdown">
                             
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-                                  Mange
+                                  Manage
                                 </a>
+                                  
                               <div class="dropdown-menu">
+                                  <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
                                             asp-area="LoanMgmt" asp-controller="LoanCategories">List of Loan</a>
+                                    <div class="dropdown-divider"></div>
                                     <a class="dropdown-item"
-                                           asp-area="LoanMgmt" asp-controller="Plans">List of Plans</a>
-                                   <a class="dropdown-item"
-                                        asp-area="LoanMgmt" asp-controller="Customers" asp-action="Create">Apply Loan</a>
-                                     
+                                           asp-area="LoanMgmt" asp-controller="Plans">List of Plans</a>   
+                                   
                                 @if (isUserAdmin)
                                 {
+                                      <div class="dropdown-divider"></div>
                                       <a class="dropdown-item"
                                    asp-area="LoanMgmt" asp-controller="Customers">List of Customer</a>
                                      <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="~/MyApiLoanCategories.html">
                                      Loan Categories API 
                                     </a>
-                                   
                                 }
-                                  <a class="dropdown-item"
-                                     asp-area="LoanMgmt" asp-controller="Approvals">See Status</a>
+                                else
+                                {
+                                      <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item"
+                                        asp-area="LoanMgmt" asp-controller="Customers" asp-action="Create">Apply Loan</a>
+                                }
+                                  <div class="dropdown-divider"></div>
+                                <a class="dropdown-item"
+                                     asp-area="LoanMgmt" asp-controller="Approvals">Loan Status</a>
                                  
 
                               </div>
