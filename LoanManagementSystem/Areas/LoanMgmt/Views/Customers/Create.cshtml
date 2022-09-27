@@ -5,7 +5,16 @@
 }
 
 <h1>Create</h1>
+<style>
 
+body{
+        
+        background-color:aquamarine;
+        background-repeat:no-repeat;
+        background-attachment:fixed;
+        background-size:100%;
+          }
+</style>
 <h4>Add New Customer</h4>
 <hr />
 <div class="row">
@@ -55,8 +64,8 @@
             <div class="form-group">
                 <label asp-for="PlanId" class="control-label"></label>
                 @*<select asp-for="PlanId" class ="form-control" asp-items="ViewBag.PlanId"></select>*@
-                 <input type="text" id="PlanId" name="PlanId" value ="@ViewBag.PlanId" readonly="readonly"/>
-                   <input type="text"  value ="@ViewBag.PlanType" readonly="readonly"/>
+                 <input type="text" id="PlanId"  class="form-control" name="PlanId" value ="@ViewBag.PlanId" readonly="readonly"/>
+                   <input type="text"  class="form-control" value ="@ViewBag.PlanType" readonly="readonly"/>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

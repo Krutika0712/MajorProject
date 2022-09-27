@@ -6,6 +6,7 @@ namespace LoanManagementSystem.Models
 {
     public class Approval
     {
+        //------Approval Id------//
         [Display(Name = "Approval Id")]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -26,7 +27,7 @@ namespace LoanManagementSystem.Models
 
 
         #region Navigation Properties to the Customer  model
-        [Display(Name = "Customer Names")]
+        [Display(Name = "Customer Name")]
         public int CustomerId { get; set; }
 
         [ForeignKey(nameof(Approval.CustomerId))]
