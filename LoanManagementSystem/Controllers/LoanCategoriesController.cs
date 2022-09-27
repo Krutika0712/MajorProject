@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LoanManagementSystem.Data;
 using LoanManagementSystem.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Logging;
 
 namespace LoanManagementSystem.Controllers
 {
@@ -17,18 +18,35 @@ namespace LoanManagementSystem.Controllers
     public class LoanCategoriesController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-
-        public LoanCategoriesController(ApplicationDbContext context)
+        private readonly ILogger<LoanCategoriesController> _logger;
+        public LoanCategoriesController(ApplicationDbContext context , ILogger<LoanCategoriesController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: api/LoanCategories
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<LoanCategory>>> GetLoanCategories()
+        //public async Task<ActionResult<IEnumerable<LoanCategory>>> GetLoanCategories()
+        public async Task<IActionResult> GetLoanCategories()
         {
-            return await _context.LoanCategories
-                  .Include(c => c.Plans).ToListAsync();
+            try
+            {
+                var categories = await _context.LoanCategories
+                                        .Include(c => c.Plans)
+                                        .ToListAsync();
+                //Check if data exists in the Database
+                if (categories == null)
+                {
+                    return NotFound();          // RETURN: No data was found            HTTP 404
+                }
+                return Ok(categories);          // RETURN: OkObjectResult - good result HTTP 200
+            }
+            catch (Exception exp)
+            {
+                return BadRequest(exp.Message); // RETURN: BadResult                    HTTP 400
+            }
+                       
         }
 
         // GET: api/LoanCategories/5
