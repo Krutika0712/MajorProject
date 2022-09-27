@@ -23,8 +23,8 @@
     }
     else {
       
-           <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Customers" 
-                       asp-action="Create" >Apply Loan<br/></a>                
+           @*<a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Customers" 
+                       asp-action="Create" >Apply Loan<br/></a>   *@             
     }
 </p>
 
@@ -97,10 +97,14 @@ body{
               {
                 <a class="btn btn-primary " asp-action="Edit" asp-route-id="@item.PlanId">Edit</a> 
                  
-                <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.PlanId">Delete</a>
-              }
-                  
-                
+                        <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.PlanId">Delete</a>
+                    }
+                    else
+                    {
+                        <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Customers" 
+                       asp-action="Create" asp-route-id="@item.PlanId">Apply Loan<br/></a>
+                    }   
+
                 <a  class="btn btn-primary"  asp-action="Details" asp-route-id="@item.PlanId">Details</a>
                              
             </td>
