@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace LoanManagementSystem.Models
 {
@@ -23,6 +24,7 @@ namespace LoanManagementSystem.Models
 
 
         #region Navigation Properties to the Plan  Model
+        [JsonIgnore]
         public ICollection<Plan> Plans { get; set; }
 
         #endregion    

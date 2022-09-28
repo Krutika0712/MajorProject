@@ -88,7 +88,7 @@ namespace LoanManagementSystem
                     config.SwaggerDoc("v1", new OpenApiInfo
                     {
                         Version = "v1",
-                        Title = "Loan",
+                        Title = "Loan Management System",
                         Description = "Loan Management System - API Version 1.0"
                     });
                 });

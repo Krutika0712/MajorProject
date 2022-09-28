@@ -85,7 +85,7 @@ namespace LoanManagementSystem.Models
 
 
 
-        #region Navigation Properties to the Customer Model
+        #region Navigation Properties to the Approval Model
 
         public ICollection<Approval> Approvals { get; set; }
 
