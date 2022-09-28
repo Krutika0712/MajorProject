@@ -60,11 +60,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        @*<li class="nav-item">
+                        <li class="nav-item">
                               <a class="nav-link text-dark"
-                                   asp-area="LoanMgmt" asp-controller="ShowPlans" asp-action="Index">Search Loan</a>
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>*@
+                                   asp-area="LoanMgmt" asp-controller="ShowPlans" asp-action="Index">Search Loan</a>                           
+                          </li>
                            <li class="nav-item dropdown">
                             
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
@@ -84,22 +83,17 @@
                                       <div class="dropdown-divider"></div>
                                       <a class="dropdown-item"
                                    asp-area="LoanMgmt" asp-controller="Customers">List of Customer</a>
-                                     <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="~/MyApiLoanCategories.html">
-                                     Loan Categories API 
-                                    </a>
+                                   
                                 }
-                               @* else
-                                {
-                                      <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item"
-                                        asp-area="LoanMgmt" asp-controller="Customers" asp-action="Create">Apply Loan</a>
-                                }*@
+                              
                                   <div class="dropdown-divider"></div>
                                 <a class="dropdown-item"
                                      asp-area="LoanMgmt" asp-controller="Approvals">Loan Status</a>
                                  
-
+                                       <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="~/MyApiLoanCategories.html">
+                                     Loan Categories API 
+                                    </a>
                               </div>
                             
                         </li>
