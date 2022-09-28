@@ -19,7 +19,7 @@ namespace LoanManagementSystem.Models
         //-------Full Name----------//
         [Display(Name = "Full Name")]
         [Required(ErrorMessage = "{0} cannot be empty!")]
-        [RegularExpression(@"(^[a-zA-Z''-'\s]{1,40}$)",ErrorMessage = "Must be Number")]
+        [RegularExpression(@"(^[a-zA-Z''-'\s]{1,40}$)",ErrorMessage = "Incorrect Name")]
         [StringLength(50)]
         public string FullName { get; set; }
 
@@ -51,7 +51,7 @@ namespace LoanManagementSystem.Models
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
 
-
+        //--- Age -------//
         [Display(Name = "Age")]
         [Required(ErrorMessage = "{0} cannot be empty!")]
         public int Age { get; set; }
@@ -60,6 +60,7 @@ namespace LoanManagementSystem.Models
         //------ Gender------------//
         [Display(Name = "Gender")]
         [Required(ErrorMessage = "{0} cannot be empty!")]
+        [RegularExpression(@"(^[a-zA-Z''-'\s]{1,40}$)", ErrorMessage = "Incorrect Gender")]
         public string Gender { get; set; }
 
 
