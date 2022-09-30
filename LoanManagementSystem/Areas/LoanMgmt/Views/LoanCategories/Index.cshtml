@@ -60,7 +60,7 @@ body{
                 
                 <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.LoanId">Details</a> 
                 |
-                <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Plans" 
+                <a class="btn btn-primary" asp-area="LoanMgmt" asp-controller="Plans" 
                        asp-action="GetPlanOfCategory" 
                        asp-route-filterLoanId="@item.LoanId">View Plans</a>
             </td>
@@ -68,4 +68,4 @@ body{
 }
     </tbody>
 </table>
-<a class="btn btn-sm btn-danger text-white" asp-area="" asp-page="/Index">Back To Home</a>
+<a class="btn btn-sm btn-primary text-white" asp-area="" asp-page="/Index">Back To Home</a>

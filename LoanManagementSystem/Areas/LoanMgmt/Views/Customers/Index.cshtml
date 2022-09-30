@@ -57,7 +57,7 @@
 
                         @* <a class="btn btn-primary disabled" href="#" >Edit</a> 
                             <a class="btn btn-primary disabled" href="#" >Delete</a>*@
-                        <a class="btn btn-warning" asp-area="LoanMgmt" asp-controller="Approvals" 
+                        <a class="btn btn-primary" asp-area="LoanMgmt" asp-controller="Approvals" 
                        asp-action="Create" asp-route-id="@item.CustomerId">Loan Status</a>
                     
                    @* else
@@ -65,7 +65,7 @@
                         <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.CustomerId">Edit</a>
                         <a class="btn btn-primary" asp-action="Delete" asp-route-id="@item.CustomerId">Delete</a>
                     }   *@
-                    <a  class="btn btn-dark"  asp-action="Details" asp-route-id="@item.CustomerId">Details</a> 
+                    <a  class="btn btn-primary"  asp-action="Details" asp-route-id="@item.CustomerId">Details</a> 
 
                 </div>
             </div>
@@ -77,7 +77,7 @@ else
     <h1 style="text-align:center">!! Thank You For Applying !!</h1>
      <h1 style="text-align:center"> !! Submitted Successfully !!</h1>
 }
-<a class="btn btn-sm btn-warning" asp-area="LoanMgmt" asp-controller="Plans" asp-action="Index">List of Loan Plans</a>
+<a class="btn btn-sm btn-primary" asp-area="LoanMgmt" asp-controller="Plans" asp-action="Index">List of Loan Plans</a>
  
-  <a class="btn btn-sm btn-danger text-white" asp-area="" asp-page="/Index">Back To Home</a>
+  <a class="btn btn-sm btn-primary text-white" asp-area="" asp-page="/Index">Back To Home</a>
 
