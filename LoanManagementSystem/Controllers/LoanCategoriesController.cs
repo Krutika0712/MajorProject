@@ -94,14 +94,7 @@ namespace LoanManagementSystem.Controllers
             {
                 return BadRequest(exp.Message);
             }
-            //var loanCategory = await _context.LoanCategories.FindAsync(id);
-
-            //if (loanCategory == null)
-            //{
-            //    return NotFound();
-            //}
-
-            //return loanCategory;
+           
         }
 
         // PUT: api/LoanCategories/5

@@ -14,6 +14,28 @@ namespace LoanManagementSystem.xUnitTestProject
     public partial class LoanCategoriesApiTests
     {
         [Fact]
+        public void InsertLoanCategory_BadRequestResult()
+        {
+            // ARRANGE
+            var dbName = nameof(LoanCategoriesApiTests.InsertLoanCategory_BadRequestResult);
+            var logger = Mock.Of<ILogger<LoanCategoriesController>>();
+            using var dbContext = DbContextMocker.GetApplicationDbContext(dbName);      // Disposable!
+            var controller = new LoanCategoriesController(dbContext, logger);
+            int? findLoanID = null;
+
+            // ACT
+            IActionResult actionResultGet = controller.GetLoanCategory(findLoanID).Result;
+
+            // ASSERT - check if the IActionResult is BadRequest
+            Assert.IsType<BadRequestResult>(actionResultGet);
+
+            // ASSERT - check if the Status Code is (HTTP 400) "BadRequest"
+            int expectedStatusCode = (int)System.Net.HttpStatusCode.BadRequest;
+            var actualStatusCode = (actionResultGet as BadRequestResult).StatusCode;
+            Assert.Equal<int>(expectedStatusCode, actualStatusCode);
+        }
+
+        [Fact]
         public void InsertLoanCategory_OkResult()
         {
             // ARRANGE
@@ -48,7 +70,7 @@ namespace LoanManagementSystem.xUnitTestProject
             LoanCategory actualLoanCategory = (postResult.Value as CreatedAtActionResult).Value
                                       .Should().BeAssignableTo<LoanCategory>().Subject;
 
-            // ASSERT - if the inserted Category object is NOT NULL
+            // ASSERT - if the inserted Loan Category object is NOT NULL
             Assert.NotNull(actualLoanCategory);
 
             Assert.Equal(loancategoryToAdd.LoanId, actualLoanCategory.LoanId);

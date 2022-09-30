@@ -9,6 +9,9 @@ namespace LoanManagementSystem.Models
     [Table(name: "Customers")]
     public class Customer
     {
+        /// <summary>
+        /// Customer Information
+        /// </summary>
         //---------Customer Id---------//
         [Display(Name = "Customer Id")]
         [Key]
@@ -34,7 +37,7 @@ namespace LoanManagementSystem.Models
         //------Phone Number--------//
         [Display(Name = "Phone Number")]
         [Required(ErrorMessage = "{0} Cannot be Empty")]
-        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Must be Digit")]
+        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Must be 10 Digit")]
         public string Phonenumber { get; set; }
 
 
@@ -71,7 +74,9 @@ namespace LoanManagementSystem.Models
         public string State { get; set; }
 
 
-
+        /// <summary>
+        /// Foreign Key
+        /// </summary>
         #region Navigation Properties to the Plan model
         [Display(Name = "Loan Plan ")]
         public int PlanId { get; set; }

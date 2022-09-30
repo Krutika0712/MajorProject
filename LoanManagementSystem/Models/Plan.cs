@@ -8,6 +8,9 @@ namespace LoanManagementSystem.Models
     [Table(name: "Plans")]
     public class Plan
     {
+        /// <summary>
+        /// Plans Details
+        /// </summary>
         //---------Loan Id---------//
         [Display(Name = "Plan Id")]
         [Key]

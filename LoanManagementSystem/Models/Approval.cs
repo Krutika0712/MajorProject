@@ -6,6 +6,9 @@ namespace LoanManagementSystem.Models
 {
     public class Approval
     {
+        /// <summary>
+        /// Approval Details
+        /// </summary>
         //------Approval Id------//
         [Display(Name = "Approval Id")]
         [Key]

@@ -8,7 +8,9 @@ namespace LoanManagementSystem.Models
     [Table(name: "LoanCategories")]
     public class LoanCategory
     {
-
+        /// <summary>
+        /// Loan Category Details
+        /// </summary>
         // ---- Loan Id -----//
         [Display(Name = "Loan Id")]
         [Key]
